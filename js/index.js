@@ -205,6 +205,8 @@ jQuery(function ($) {
 
 
         };
+        //更换表情图片
+        // replaceOnshowEmoji(6);
         setInterval(testTime,5000);
 
     }

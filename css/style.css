@@ -1,3 +1,21 @@
+/*==============Add by jichao ==================*/
+#face_realtime {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    height: 200px;
+    width: 200px;
+}
+/*==============================================*/
+
+
+
+
+
+
+
+
+/* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
 /* Font Family
 ================================================== */
 
@@ -8,21 +26,22 @@
 ================================================== */
 
 html,body {
--webkit-font-smoothing:antialiased;
--webkit-text-size-adjust:100%;
-background-color:#0665a2;
-color:#fff;
-font-size:105%;
-font-family:"Oxygen", HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-weight:300;
-letter-spacing:.025rem;
-line-height:1.618;
-padding:1rem 0;
+    -webkit-font-smoothing:antialiased;
+    -webkit-text-size-adjust:100%;
+    background-image: url("img/intro-bg.jpg");
+    background-size:100% auto;
+    color:#fff;
+    font-size:105%;
+    font-family:"Oxygen", HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight:300;
+    letter-spacing:.025rem;
+    line-height:1.618;
+    padding:1rem 0;
 }
 
 * {
--webkit-tap-highlight-color:rgba(0,0,0,0);
--webkit-tap-highlight-color:transparent;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-tap-highlight-color:transparent;
 }
 
 
@@ -56,107 +75,107 @@ p a,p a:visited { line-height:inherit; }
 ================================================== */
 
 audio {
-margin:0 15px 0 14px;
-width:670px;
+    margin:0 15px 0 14px;
+    width:670px;
 }
 
 #mainwrap {}
 
 #audiowrap,
 #plwrap {
-margin:0 auto;
+    margin:0 auto;
 }
 
 #tracks {
-position:relative;
-text-align:center;
+    position:relative;
+    text-align:center;
 }
 
 #nowPlay {
-display:inline;
+    display:inline;
 }
 
 #npAction {
-padding:21px;
-position:absolute;
+    padding:21px;
+    position:absolute;
 }
 
 #npTitle {
-padding:21px;
+    padding:21px;
 }
 
 #plList li {
-cursor:pointer;
-display:block;
-margin:0;
-padding:21px 0;
+    cursor:pointer;
+    display:block;
+    margin:0;
+    padding:21px 0;
 }
 
 #plList li:hover {
-background-color:rgba(0,0,0,.1);
+    background-color:rgba(0,0,0,.1);
 }
 
 .plItem {
-position:relative;
+    position:relative;
 }
 
 .plTitle {
-left:50px;
-overflow:hidden;
-position:absolute;
-right:65px;
-text-overflow:ellipsis;
-top:0;
-white-space:nowrap;
+    left:50px;
+    overflow:hidden;
+    position:absolute;
+    right:65px;
+    text-overflow:ellipsis;
+    top:0;
+    white-space:nowrap;
 }
 
 .plNum {
-padding-left:21px;
-width:25px;
+    padding-left:21px;
+    width:25px;
 }
 
 .plLength {
-padding-left:21px;
-position:absolute;
-right:21px;
-top:0;
+    padding-left:21px;
+    position:absolute;
+    right:21px;
+    top:0;
 }
 
 .plSel,
 .plSel:hover {
-background-color:rgba(0,0,0,.1);
-color:#fff;
-cursor:default !important;
+    background-color:rgba(0,0,0,.1);
+    color:#fff;
+    cursor:default !important;
 }
 
 a[id^="btn"] {
-border-radius:3px;
-color:#fff;
-cursor:pointer;
-display:inline-block;
-font-size:2rem;
-height:35px;
-line-height:.8;
-margin:0 20px 20px;
-padding:10px;
-text-decoration:none;
-transition:background .3s ease;
-width:35px;
+    border-radius:3px;
+    color:#fff;
+    cursor:pointer;
+    display:inline-block;
+    font-size:2rem;
+    height:35px;
+    line-height:.8;
+    margin:0 20px 20px;
+    padding:10px;
+    text-decoration:none;
+    transition:background .3s ease;
+    width:35px;
 }
 
 a[id^="btn"]:last-child {
-margin-left:-4px;
+    margin-left:-4px;
 }
 
 a[id^="btn"]:hover,
 a[id^="btn"]:active {
-background-color:rgba(0,0,0,.1);
-color:#fff;
+    background-color:rgba(0,0,0,.1);
+    color:#fff;
 }
 
 a[id^="btn"]::-moz-focus-inner {
-border:0;
-padding:0;
+    border:0;
+    padding:0;
 }
 
 
@@ -164,30 +183,30 @@ padding:0;
 ================================================== */
 
 .plyr--audio .plyr__controls {
-background-color:transparent;
-border:none;
-color:#fff;
-padding:20px 20px 20px 13px;
-width:100%;
+    background-color:transparent;
+    border:none;
+    color:#fff;
+    padding:20px 20px 20px 13px;
+    width:100%;
 }
 
 .plyr--audio .plyr__controls button.tab-focus:focus,
 .plyr--audio .plyr__controls button:hover,
 .plyr__play-large {
-background:rgba(0,0,0,.1);
+    background:rgba(0,0,0,.1);
 }
 
 .plyr__progress--played, .plyr__volume--display {
-color:rgba(0,0,0,.1);
+    color:rgba(0,0,0,.1);
 }
 
 .plyr--audio .plyr__progress--buffer,
 .plyr--audio .plyr__volume--display {
-background:rgba(0,0,0,.1);
+    background:rgba(0,0,0,.1);
 }
 
 .plyr--audio .plyr__progress--buffer {
-color:rgba(0,0,0,.1);
+    color:rgba(0,0,0,.1);
 }
 
 
