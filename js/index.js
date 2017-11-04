@@ -81,91 +81,98 @@ jQuery(function ($) {
                 "length": "8:13",
                 "file": "PNY04-05_TF"
             }];
-        var zz = function(data,flag){
-        $('#plList').html("");
-        var index = 0,
-            playing = false,
-            mediaPath = 'https://archive.org/download/mythium/',
-            extension = '',
-            tracks = data,
 
-            buildPlaylist = $.each(tracks, function(key, value) {
-                var trackNumber = value.track,
-                    trackName = value.name,
-                    trackLength = value.length;
-                if (trackNumber.toString().length === 1) {
-                    trackNumber = '0' + trackNumber;
-                } else {
-                    trackNumber = '' + trackNumber;
-                }
-                $('#plList').append('<li><div class="plItem"><div class="plNum">' + trackNumber + '.</div><div class="plTitle">' + trackName + '</div><div class="plLength">' + trackLength + '</div></div></li>');
-            }),
-            trackCount = tracks.length,
-            npAction = $('#npAction'),
-            npTitle = $('#npTitle'),
-            audio = $('#audio1').bind('play', function () {
-                playing = true;
-                npAction.text('Now Playing...');
-            }).bind('pause', function () {
-                playing = false;
-                npAction.text('Paused...');
-            }).bind('ended', function () {
-                npAction.text('Paused...');
-                if ((index + 1) < trackCount) {
-                    index++;
-                    loadTrack(index);
+       var playing = false;
+        var zz = function(data,flag) {
+            $('#plList').html("");
+            var index = 0,
+
+                mediaPath = 'https://archive.org/download/mythium/',
+                extension = '',
+                tracks = data,
+
+                buildPlaylist = $.each(tracks, function (key, value) {
+                    var trackNumber = value.track,
+                        trackName = value.name,
+                        trackLength = value.length;
+                    if (trackNumber.toString().length === 1) {
+                        trackNumber = '0' + trackNumber;
+                    } else {
+                        trackNumber = '' + trackNumber;
+                    }
+                    $('#plList').append('<li><div class="plItem"><div class="plNum">' + trackNumber + '.</div><div class="plTitle">' + trackName + '</div><div class="plLength">' + trackLength + '</div></div></li>');
+                }),
+                trackCount = tracks.length,
+                npAction = $('#npAction'),
+                npTitle = $('#npTitle'),
+                audio = $('#audio1').bind('play', function () {
+                    playing = true;
+                    npAction.text('Now Playing...');
+                }).bind('pause', function () {
+                    playing = false;
+                    npAction.text('Paused...');
+                }).bind('ended', function () {
+                    npAction.text('Paused...');
+                    if ((index + 1) < trackCount) {
+                        index++;
+                        loadTrack(index);
+                        audio.play();
+                    } else {
+                        audio.pause();
+                        index = 0;
+                        loadTrack(index);
+                    }
+                }).get(0),
+                btnPrev = $('#btnPrev').click(function () {
+                    if ((index - 1) > -1) {
+                        index--;
+                        loadTrack(index);
+                        if (playing) {
+                            audio.play();
+                        }
+                    } else {
+                        audio.pause();
+                        index = 0;
+                        loadTrack(index);
+                    }
+                }),
+                btnNext = $('#btnNext').click(function () {
+                    if ((index + 1) < trackCount) {
+                        index++;
+                        loadTrack(index);
+                        if (playing) {
+                            audio.play();
+                        }
+                    } else {
+                        audio.pause();
+                        index = 0;
+                        loadTrack(index);
+                    }
+                }),
+                li = $('#plList li').click(function () {
+                    var id = parseInt($(this).index());
+                    if (id !== index) {
+                        playTrack(id);
+                    }
+                }),
+                loadTrack = function (id) {
+                    $('.plSel').removeClass('plSel');
+                    $('#plList li:eq(' + id + ')').addClass('plSel');
+                    npTitle.text(tracks[id].name);
+                    index = id;
+                    audio.src = mediaPath + tracks[id].file + extension;
+                },
+                playTrack = function (id) {
+                    loadTrack(id);
                     audio.play();
-                } else {
-                    audio.pause();
-                    index = 0;
-                    loadTrack(index);
-                }
-            }).get(0),
-            btnPrev = $('#btnPrev').click(function () {
-                if ((index - 1) > -1) {
-                    index--;
-                    loadTrack(index);
-                    if (playing) {
-                        audio.play();
-                    }
-                } else {
-                    audio.pause();
-                    index = 0;
-                    loadTrack(index);
-                }
-            }),
-            btnNext = $('#btnNext').click(function () {
-                if ((index + 1) < trackCount) {
-                    index++;
-                    loadTrack(index);
-                    if (playing) {
-                        audio.play();
-                    }
-                } else {
-                    audio.pause();
-                    index = 0;
-                    loadTrack(index);
-                }
-            }),
-            li = $('#plList li').click(function () {
-                var id = parseInt($(this).index());
-                if (id !== index) {
-                    playTrack(id);
-                }
-            }),
-            loadTrack = function (id) {
-                $('.plSel').removeClass('plSel');
-                $('#plList li:eq(' + id + ')').addClass('plSel');
-                npTitle.text(tracks[id].name);
-                index = id;
-                audio.src = mediaPath + tracks[id].file + extension;
-            },
-            playTrack = function (id) {
-                loadTrack(id);
-                audio.play();
-            };
-        extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
-        loadTrack(index);
+                };
+            extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
+            if (flag) {
+            loadTrack(index);
+          }
+             else{
+                index = -1;
+            }
 
       };
 
@@ -189,9 +196,12 @@ jQuery(function ($) {
 
 
         var testTime = function(){
-            var htmlobj=$.ajax({url:"https://www.juhe.cn/loginStatus",dataType:'jsonp',async:false});
-            console.log(htmlobj.responseText)
-            // zz(data,false)
+            // var htmlobj=$.ajax({url:"https://www.juhe.cn/loginStatus",dataType:'jsonp',async:false});
+            // console.log(htmlobj.responseText)
+            if (!(JSON.stringify(data) === JSON.stringify(racks))) {
+                zz(data, false)
+                racks = data;
+            }
 
 
         };
