@@ -10,9 +10,7 @@ jQuery(function ($) {
     'use strict'
     var supportsAudio = !!document.createElement('audio').canPlayType;
     if (supportsAudio) {
-        //这个东西是播放音乐列表的信息
-       var data = [
-           {
+       var data = [{
                 "track": 1,
                 "name": "All This Is - Joe L.'s Studio",
                 "length": "2:46",
@@ -83,95 +81,98 @@ jQuery(function ($) {
                 "length": "8:13",
                 "file": "PNY04-05_TF"
             }];
-       //data是播放列表信息,flag变量没用到
-       var zz = function(data,flag){
+
+       var playing = false;
+        var zz = function(data,flag) {
             $('#plList').html("");
             var index = 0,
-                playing = false,
-                mediaPath = 'https://archive.org/download/mythium/', //音乐的存储地址
-                extension = '', //这个是要播放的音乐的后缀名
+
+                mediaPath = 'https://archive.org/download/mythium/',
+                extension = '',
                 tracks = data,
 
-            buildPlaylist = $.each(tracks, function(key, value) {
-                var trackNumber = value.track,
-                    trackName = value.name,
-                    trackLength = value.length;
-                if (trackNumber.toString().length === 1) {
-                    trackNumber = '0' + trackNumber;
-                } else {
-                    trackNumber = '' + trackNumber;
-                }
-                $('#plList').append('<li><div class="plItem"><div class="plNum">' + trackNumber + '.</div><div class="plTitle">' + trackName + '</div><div class="plLength">' + trackLength + '</div></div></li>');
-            }),
-            trackCount = tracks.length,
-            npAction = $('#npAction'),
-            npTitle = $('#npTitle'),
-            audio = $('#audio1').bind('play', function () {
-                playing = true;
-                npAction.text('Now Playing...');
-            }).bind('pause', function () {
-                playing = false;
-                npAction.text('Paused...');
-            }).bind('ended', function () {
-                npAction.text('Paused...');
-                if ((index + 1) < trackCount) {
-                    index++;
-                    loadTrack(index);
+                buildPlaylist = $.each(tracks, function (key, value) {
+                    var trackNumber = value.track,
+                        trackName = value.name,
+                        trackLength = value.length;
+                    if (trackNumber.toString().length === 1) {
+                        trackNumber = '0' + trackNumber;
+                    } else {
+                        trackNumber = '' + trackNumber;
+                    }
+                    $('#plList').append('<li><div class="plItem"><div class="plNum">' + trackNumber + '.</div><div class="plTitle">' + trackName + '</div><div class="plLength">' + trackLength + '</div></div></li>');
+                }),
+                trackCount = tracks.length,
+                npAction = $('#npAction'),
+                npTitle = $('#npTitle'),
+                audio = $('#audio1').bind('play', function () {
+                    playing = true;
+                    npAction.text('Now Playing...');
+                }).bind('pause', function () {
+                    playing = false;
+                    npAction.text('Paused...');
+                }).bind('ended', function () {
+                    npAction.text('Paused...');
+                    if ((index + 1) < trackCount) {
+                        index++;
+                        loadTrack(index);
+                        audio.play();
+                    } else {
+                        audio.pause();
+                        index = 0;
+                        loadTrack(index);
+                    }
+                }).get(0),
+                btnPrev = $('#btnPrev').click(function () {
+                    if ((index - 1) > -1) {
+                        index--;
+                        loadTrack(index);
+                        if (playing) {
+                            audio.play();
+                        }
+                    } else {
+                        audio.pause();
+                        index = 0;
+                        loadTrack(index);
+                    }
+                }),
+                btnNext = $('#btnNext').click(function () {
+                    if ((index + 1) < trackCount) {
+                        index++;
+                        loadTrack(index);
+                        if (playing) {
+                            audio.play();
+                        }
+                    } else {
+                        audio.pause();
+                        index = 0;
+                        loadTrack(index);
+                    }
+                }),
+                li = $('#plList li').click(function () {
+                    var id = parseInt($(this).index());
+                    if (id !== index) {
+                        playTrack(id);
+                    }
+                }),
+                loadTrack = function (id) {
+                    $('.plSel').removeClass('plSel');
+                    $('#plList li:eq(' + id + ')').addClass('plSel');
+                    npTitle.text(tracks[id].name);
+                    index = id;
+                    audio.src = mediaPath + tracks[id].file + extension;
+                },
+                playTrack = function (id) {
+                    loadTrack(id);
                     audio.play();
-                } else {
-                    audio.pause();
-                    index = 0;
-                    loadTrack(index);
-                }
-            }).get(0),
-            btnPrev = $('#btnPrev').click(function () {
-                if ((index - 1) > -1) {
-                    index--;
-                    loadTrack(index);
-                    if (playing) {
-                        audio.play();
-                    }
-                } else {
-                    audio.pause();
-                    index = 0;
-                    loadTrack(index);
-                }
-            }),
-            btnNext = $('#btnNext').click(function () {
-                if ((index + 1) < trackCount) {
-                    index++;
-                    loadTrack(index);
-                    if (playing) {
-                        audio.play();
-                    }
-                } else {
-                    audio.pause();
-                    index = 0;
-                    loadTrack(index);
-                }
-            }),
-            li = $('#plList li').click(function () {
-                var id = parseInt($(this).index());
-                if (id !== index) {
-                    playTrack(id);
-                }
-            }),
-            loadTrack = function (id) {
-                $('.plSel').removeClass('plSel');
-                $('#plList li:eq(' + id + ')').addClass('plSel');
-                npTitle.text(tracks[id].name);
-                index = id;
-                audio.src = mediaPath + tracks[id].file + extension;
-            },
-            playTrack = function (id) {
-                loadTrack(id);
-                audio.play();
-            };
-
-            //确定浏览器可以播放的音乐格式类型，然后将后缀名加到播放的音乐名之后
+                };
             extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
-
+            if (flag) {
             loadTrack(index);
+          }
+             else{
+                index = -1;
+            }
 
       };
 
@@ -179,29 +180,28 @@ jQuery(function ($) {
       //样例
 
        // zz(data);
-       var racks=[
-           {
+       var racks=[{
                 "track": 1,
-                "name": "All This Is - Joe L.'s Studio",
-                "length": "2:46",
-                "file": "JLS_ATI"
-          }, {
+                "name": "The Forsaken - Broadwing Studio (Final Mix)",
+                "length": "8:31",
+                "file": "BS_TF"
+          },{
                 "track": 2,
                 "name": "The Forsaken - Broadwing Studio (Final Mix)",
                 "length": "8:31",
                 "file": "BS_TF"
-          }
-       ];
-       zz(racks,true);//修改这里的第一个参数来控制播放列表
+          }];
+        zz(racks,true);
 
 
 
         var testTime = function(){
-
-            var htmlobj=$.ajax({url:"https://www.juhe.cn/loginStatus",dataType:'jsonp',async:false});
-
-            console.log(htmlobj.responseText)
-            // zz(data,false)
+            // var htmlobj=$.ajax({url:"https://www.juhe.cn/loginStatus",dataType:'jsonp',async:false});
+            // console.log(htmlobj.responseText)
+            if (!(JSON.stringify(data) === JSON.stringify(racks))) {
+                zz(data, false)
+                racks = data;
+            }
 
 
         };
