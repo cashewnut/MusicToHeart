@@ -10,7 +10,9 @@ jQuery(function ($) {
     'use strict'
     var supportsAudio = !!document.createElement('audio').canPlayType;
     if (supportsAudio) {
-       var data = [{
+        //这个东西是播放音乐列表的信息
+       var data = [
+           {
                 "track": 1,
                 "name": "All This Is - Joe L.'s Studio",
                 "length": "2:46",
@@ -81,13 +83,14 @@ jQuery(function ($) {
                 "length": "8:13",
                 "file": "PNY04-05_TF"
             }];
-        var zz = function(data,flag){
-        $('#plList').html("");
-        var index = 0,
-            playing = false,
-            mediaPath = 'https://archive.org/download/mythium/',
-            extension = '',
-            tracks = data,
+       //data是播放列表信息,flag变量没用到
+       var zz = function(data,flag){
+            $('#plList').html("");
+            var index = 0,
+                playing = false,
+                mediaPath = 'https://archive.org/download/mythium/', //音乐的存储地址
+                extension = '', //这个是要播放的音乐的后缀名
+                tracks = data,
 
             buildPlaylist = $.each(tracks, function(key, value) {
                 var trackNumber = value.track,
@@ -164,8 +167,11 @@ jQuery(function ($) {
                 loadTrack(id);
                 audio.play();
             };
-        extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
-        loadTrack(index);
+
+            //确定浏览器可以播放的音乐格式类型，然后将后缀名加到播放的音乐名之后
+            extension = audio.canPlayType('audio/mpeg') ? '.mp3' : audio.canPlayType('audio/ogg') ? '.ogg' : '';
+
+            loadTrack(index);
 
       };
 
@@ -173,23 +179,27 @@ jQuery(function ($) {
       //样例
 
        // zz(data);
-       var racks=[{
+       var racks=[
+           {
                 "track": 1,
-                "name": "The Forsaken - Broadwing Studio (Final Mix)",
-                "length": "8:31",
-                "file": "BS_TF"
-          },{
+                "name": "All This Is - Joe L.'s Studio",
+                "length": "2:46",
+                "file": "JLS_ATI"
+          }, {
                 "track": 2,
                 "name": "The Forsaken - Broadwing Studio (Final Mix)",
                 "length": "8:31",
                 "file": "BS_TF"
-          }];
-        zz(racks,true);
+          }
+       ];
+       zz(racks,true);//修改这里的第一个参数来控制播放列表
 
 
 
         var testTime = function(){
+
             var htmlobj=$.ajax({url:"https://www.juhe.cn/loginStatus",dataType:'jsonp',async:false});
+
             console.log(htmlobj.responseText)
             // zz(data,false)
 
