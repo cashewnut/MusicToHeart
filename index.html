@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <title>Responsive Audio Player</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <!--<link rel="stylesheet" type="css/style.css" href="css/style.css">-->
+    <link rel="stylesheet" type="css/style.css" href="css/jichao.css">
+    <link rel='stylesheet prefetch' href='http://cdn.plyr.io/2.0.13/plyr.css'>
 
     <style>
       /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
@@ -16,19 +19,18 @@
 
 /* Global Styles
 ================================================== */
-
 html,body {
--webkit-font-smoothing:antialiased;
--webkit-text-size-adjust:100%;
-background-image: url("img/intro-bg.jpg");
-background-size:100% auto;
-color:#fff;
-font-size:105%;
-font-family:"Oxygen", HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-weight:300;
-letter-spacing:.025rem;
-line-height:1.618;
-padding:1rem 0;
+    -webkit-font-smoothing:antialiased;
+    -webkit-text-size-adjust:100%;
+    background-image: url("img/intro-bg.jpg");
+    background-size:100% auto;
+    color:#fff;
+    font-size:105%;
+    font-family:"Oxygen", HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight:300;
+    letter-spacing:.025rem;
+    line-height:1.618;
+    padding:1rem 0;
 }
 
 * {
@@ -211,14 +213,7 @@ color:rgba(0,0,0,.1);
 
     </style>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel="stylesheet" type="css/style.css" href="css/style.css">
-    <link rel='stylesheet prefetch' href='http://cdn.plyr.io/2.0.13/plyr.css'>
-    <script type="text/javascript" src='http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <script type="text/javascript" src='http://api.html5media.info/1.1.8/html5media.min.js'></script>
-    <script type="text/javascript" src='http://cdn.plyr.io/2.0.13/plyr.js'></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
     <script type="text/javascript" src="js/replaceEmoji.js"></script>
 
 </head>
@@ -252,4 +247,9 @@ color:rgba(0,0,0,.1);
             </div>
         </div>
     </body>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src='http://api.html5media.info/1.1.8/html5media.min.js'></script>
+    <script src='http://cdn.plyr.io/2.0.13/plyr.js'></script>
+    <script  src="js/index.js"></script>
+
 </html>

@@ -1,21 +1,3 @@
-/*==============Add by jichao ==================*/
-#face_realtime {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    height: 200px;
-    width: 200px;
-}
-/*==============================================*/
-
-
-
-
-
-
-
-
-/* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
 /* Font Family
 ================================================== */
 
@@ -28,8 +10,7 @@
 html,body {
     -webkit-font-smoothing:antialiased;
     -webkit-text-size-adjust:100%;
-    background-image: url("../img/intro-bg.jpg");
-    background-size:100% auto;
+    background-color:#0665a2;
     color:#fff;
     font-size:105%;
     font-family:"Oxygen", HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
