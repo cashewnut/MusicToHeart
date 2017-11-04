@@ -1,0 +1,4 @@
+server-service里DockerFile用来编译
+requirements.txt是编译会用到的依赖
+server.py是服务器源程序
+文件夹外的docker-compose是启动服务器的配置程序

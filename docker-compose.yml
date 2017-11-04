@@ -1,0 +1,26 @@
+version: '3'
+services:
+
+  server-service:
+          build: server-service
+          image: ts/server-service
+          restart: always
+          ports:
+            - 16101:16101
+          deploy:
+            replicas: 3
+            restart_policy:
+              condition: on-failure
+          networks:
+            - my-network
+
+
+networks:
+  my-network:
+    # driver: overlay
+    driver: bridge
+
+
+
+
+

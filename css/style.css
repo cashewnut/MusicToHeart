@@ -28,7 +28,7 @@
 html,body {
     -webkit-font-smoothing:antialiased;
     -webkit-text-size-adjust:100%;
-    background-image: url("img/intro-bg.jpg");
+    background-image: url("../img/intro-bg.jpg");
     background-size:100% auto;
     color:#fff;
     font-size:105%;

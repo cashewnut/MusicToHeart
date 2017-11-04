@@ -10,7 +10,7 @@ jQuery(function ($) {
     'use strict'
     var supportsAudio = !!document.createElement('audio').canPlayType;
     if (supportsAudio) {
-       var data = [{
+        var data = [{
                 "track": 1,
                 "name": "All This Is - Joe L.'s Studio",
                 "length": "2:46",
@@ -81,8 +81,7 @@ jQuery(function ($) {
                 "length": "8:13",
                 "file": "PNY04-05_TF"
             }];
-
-       var playing = false;
+        var playing = false;
         var zz = function(data,flag) {
             $('#plList').html("");
             var index = 0,
@@ -175,26 +174,20 @@ jQuery(function ($) {
             }
 
       };
-
-
-      //样例
-
-       // zz(data);
-       var racks=[{
-                "track": 1,
-                "name": "The Forsaken - Broadwing Studio (Final Mix)",
-                "length": "8:31",
-                "file": "BS_TF"
+        //样例
+        // zz(data);
+        var racks=[{
+            "track": 1,
+            "name": "The Forsaken - Broadwing Studio (Final Mix)",
+            "length": "8:31",
+            "file": "BS_TF"
           },{
-                "track": 2,
-                "name": "The Forsaken - Broadwing Studio (Final Mix)",
-                "length": "8:31",
-                "file": "BS_TF"
+            "track": 2,
+            "name": "The Forsaken - Broadwing Studio (Final Mix)",
+            "length": "8:31",
+            "file": "BS_TF"
           }];
-        zz(racks,true);
-
-
-
+        // zz(racks,true);
         var testTime = function(){
             // var htmlobj=$.ajax({url:"https://www.juhe.cn/loginStatus",dataType:'jsonp',async:false});
             // console.log(htmlobj.responseText)
@@ -202,15 +195,23 @@ jQuery(function ($) {
                 zz(data, false)
                 racks = data;
             }
-
-
         };
         //更换表情图片
         // replaceOnshowEmoji(6);
-        setInterval(testTime,5000);
-
+        // setInterval(testTime,5000);
     }
+
+    function playTheMusic(songInfoList){
+        zz(songInfoList,true);
+    }
+
+    //手动更新播放列表的方法
+    $("#testPlay").click(function(){
+        playTheMusic(racks);
+    });
+
 });
+
 
 //initialize plyr
 plyr.setup($('#audio1'), {});

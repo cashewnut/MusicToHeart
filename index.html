@@ -4,16 +4,9 @@
     <meta charset="UTF-8">
     <title>Responsive Audio Player</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <link rel="stylesheet" type="css/style.css" href="css/style.css">
-    <link rel='stylesheet prefetch' href='http://cdn.plyr.io/2.0.13/plyr.css'>
-    <script type="text/javascript" src='http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <script type="text/javascript" src='http://api.html5media.info/1.1.8/html5media.min.js'></script>
-    <script type="text/javascript" src='http://cdn.plyr.io/2.0.13/plyr.js'></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="js/replaceEmoji.js"></script>
 
-      <style>
+
+    <style>
       /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
       /* Font Family
 ================================================== */
@@ -219,6 +212,14 @@ color:rgba(0,0,0,.1);
     </style>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" type="css/style.css" href="css/style.css">
+    <link rel='stylesheet prefetch' href='http://cdn.plyr.io/2.0.13/plyr.css'>
+    <script type="text/javascript" src='http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script type="text/javascript" src='http://api.html5media.info/1.1.8/html5media.min.js'></script>
+    <script type="text/javascript" src='http://cdn.plyr.io/2.0.13/plyr.js'></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/replaceEmoji.js"></script>
 
 </head>
     <body>
@@ -247,6 +248,7 @@ color:rgba(0,0,0,.1);
                 <p>Music by <a>HuaGe</a></p>
                 <p>Download: <a>zip</a> / <a>mp3</a></p>
                 <img id="face_realtime" src="img/angry.png"  alt="用户当前表情判断" />
+                <button id="testPlay" type="button">尝试手动播放音乐</button>
             </div>
         </div>
     </body>
