@@ -145,7 +145,7 @@ jQuery(function ($) {
                         var tempTrack = new Object();
                         tempTrack.track = i;
                         tempTrack.name = songList[i];
-                        var min = Math.floor(Math.random()*3) + Math.floor(Math.random()*3);
+                        var min = 1 + Math.floor(Math.random()*3);
                         var sec = Math.floor(Math.random()*30) + Math.floor(Math.random()*30) ;
                         tempTrack.length = min + ":" + sec;
                         tempTrack.file = songList[i];
@@ -165,7 +165,7 @@ jQuery(function ($) {
                 }
             },
             error: function(){
-                alert("出错。")
+                alert("服务器无法连接")
             }
         });
     }
