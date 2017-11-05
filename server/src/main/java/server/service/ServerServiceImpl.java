@@ -35,8 +35,9 @@ public class ServerServiceImpl implements ServerService{
         GetSongInfoResult result = new GetSongInfoResult();
         if(songInfos.isEmpty() == false){
             SongInfo songInfo = songInfos.get(0);
+            //TODO
             songInfos.remove(0);
-            songInfos.add(songInfo);
+//            songInfos.add(songInfo);
             result.setStatus(true);
             result.setResult("Success");
             result.setSongInfo(songInfo);
@@ -62,5 +63,11 @@ public class ServerServiceImpl implements ServerService{
             }
             return result;
         }
+    }
+
+    @Override
+    public String clearAll() {
+        songInfos.clear();
+        return "Size:" + songInfos.size();
     }
 }

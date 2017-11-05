@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class TestPost {
 
 
-    public static final String ADD_URL = "http://10.141.212.23:14567/postSongs";
+    public static final String ADD_URL = "http://10.141.212.24:14567/postSongs";
 
     public static void appadd() throws IOException {
         HttpURLConnection connection=null;
@@ -47,9 +47,9 @@ public class TestPost {
             PostSongInfo info = new PostSongInfo();
             info.setEmotionType(0);
             ArrayList<String> list = new ArrayList<String>();
-            list.add("one");
-            list.add("two");
-            list.add("three");
+            list.add("All About You-Hilary Duff_new.mp3");
+            list.add("All Falls Down-Alan Walker,Noah Cyrus,Digital Farm Animals_new");
+           
             info.setSongNameList(list);
 
 

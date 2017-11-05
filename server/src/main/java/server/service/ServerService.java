@@ -12,4 +12,6 @@ public interface ServerService {
 
     String showAll();
 
+    String clearAll();
+
 }

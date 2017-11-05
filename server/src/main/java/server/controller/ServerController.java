@@ -40,4 +40,11 @@ public class ServerController {
         return service.showAll();
     }
 
+    @CrossOrigin(origins = "*")
+    @RequestMapping(value = "/clearAll", method = RequestMethod.GET)
+    public String clearAll(){
+        System.out.println("[Server Service] Show All.");
+        return service.clearAll();
+    }
+
 }

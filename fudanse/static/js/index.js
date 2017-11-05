@@ -110,8 +110,16 @@ jQuery(function ($) {
         };
     }
 
-    getEmotionMusicListFromServer();
+    var lastsongflag;
 
+    //每十秒钟刷新一次页面
+    var timer = setInterval(function() {
+        getEmotionMusicListFromServer();
+    }, 2000);
+
+    //setInterval(getEmotionMusicListFromServer(), 5000);
+    //getEmotionMusicListFromServer();
+    getEmotionMusicListFromServer();
     //手动更新播放列表
     $("#testPlay").click(function(){
         getEmotionMusicListFromServer();
@@ -129,6 +137,8 @@ jQuery(function ($) {
             },
             success: function (obj) {
                 if(obj["status"] == true){
+
+
                     var songList = obj["songInfo"]["songNameList"];
                     var arrayObj = new Array(songList.length);
                     for(var i = 0;i < songList.length;i++){
@@ -141,11 +151,17 @@ jQuery(function ($) {
                         tempTrack.file = songList[i];
                         arrayObj[i] = tempTrack;
                     }
-                    playTheMusic(arrayObj);
-                    //更换表情图片
-                    replaceOnshowEmoji(obj["songInfo"]["emotionType"]);
+                    var songflag = obj["songInfo"]["emotionType"];
+                    if(!(songflag=== lastsongflag)) {
+                        playTheMusic(arrayObj);
+                        //更换表情图片
+                        replaceOnshowEmoji(obj["songInfo"]["emotionType"]);
+                        lastsongflag = songflag;
+                    }else{
+                        console.log("未更换")
+                    }
                 }else{
-                    alert("报错信息：" + obj["message"])
+                    //alert("报错信息：" + obj["message"])
                 }
             },
             error: function(){
@@ -153,9 +169,13 @@ jQuery(function ($) {
             }
         });
     }
+
+
+
     function playTheMusic(songInfoList){
         zz(songInfoList,true);
     }
+
 });
 
 //initialize plyr

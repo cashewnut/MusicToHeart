@@ -30,8 +30,8 @@ public class InitData implements CommandLineRunner {
 
         musicList = new ArrayList<>();
         musicList.add("First Love.mp3");
-        musicList.add("Feels Like Home.mp3");
-        musicList.add("Faking It.mp3");
+//        musicList.add("Feels Like Home.mp3");
+//        musicList.add("Faking It.mp3");
 
         info.setEmotionType(1);
         info.setSongNameList(musicList);
@@ -42,7 +42,7 @@ public class InitData implements CommandLineRunner {
         musicList.add("Runaway.mp3");
         musicList.add("Overcome.mp3");
 
-        info.setEmotionType(2);
+        info.setEmotionType(1);
         info.setSongNameList(musicList);
         service.postSongList(info);
 
@@ -51,31 +51,31 @@ public class InitData implements CommandLineRunner {
         musicList.add("Asphyxia.mp3");
         musicList.add("Free Loop.mp3");
 
-        info.setEmotionType(3);
+        info.setEmotionType(2);
         info.setSongNameList(musicList);
         service.postSongList(info);
-
-        musicList = new ArrayList<>();
-        musicList.add("Rather Be.mp3");
-        musicList.add("I Do.mp3");
-        musicList.add("Angelina.mp3");
-
-        info.setEmotionType(4);
-        info.setSongNameList(musicList);
-        service.postSongList(info);
-
-        musicList = new ArrayList<>();
-        musicList.add("Tassel.mp3");
-
-        info.setEmotionType(5);
-        info.setSongNameList(musicList);
-        service.postSongList(info);
-
-        musicList = new ArrayList<>();//Empty Set
-
-        info.setEmotionType(6);
-        info.setSongNameList(musicList);
-        service.postSongList(info);
+//
+//        musicList = new ArrayList<>();
+//        musicList.add("Rather Be.mp3");
+//        musicList.add("I Do.mp3");
+//        musicList.add("Angelina.mp3");
+//
+//        info.setEmotionType(4);
+//        info.setSongNameList(musicList);
+//        service.postSongList(info);
+//
+//        musicList = new ArrayList<>();
+//        musicList.add("Tassel.mp3");
+//
+//        info.setEmotionType(5);
+//        info.setSongNameList(musicList);
+//        service.postSongList(info);
+//
+//        musicList = new ArrayList<>();//Empty Set
+//
+//        info.setEmotionType(6);
+//        info.setSongNameList(musicList);
+//        service.postSongList(info);
 
     }
 
